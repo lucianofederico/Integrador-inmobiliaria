@@ -29,6 +29,10 @@ Propiedades.init(
       type: S.BOOLEAN,
       defaultValue: true,
     },
+    categoria:{
+      type: S.ARRAY(S.STRING),
+      allowNull:false,
+    }
   },
   { sequelize: db, modelName: "propiedades" }
 );

@@ -1,8 +1,12 @@
 const express=require('express');
 const router=express.Router();
+const user = require('./users')
+const propiedades = require("./propiedades")
+const admin = require("./admin")
 
-router.get('/',(req,res)=>{
-    res.end('Hola mundo');
-})
+
+router.use('/users', user)
+router.use('/propiedades', propiedades)
+router.use("/admin", admin)
 
 module.exports = router
