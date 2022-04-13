@@ -29,17 +29,18 @@ routerAdmin.delete("/deleteuser/:id", (req, res) => {
             }
         })
         .then((data) => res.sendStatus(202))
+        .catch(err => console.log(err))
 })
 
-routerAdmin.post("/changeuser", (req,res)=>{
-    const {admin} = req.body
-    User.update(req.body,{
-        where:{
-            admin:admin,
-        }})
-        .then(() => res.sendStatus(200))
-        .catch (err => console.log(err))
-})
+// routerAdmin.post("/changeuser", (req,res)=>{
+//     const {admin} = req.body
+//     User.update(req.body,{
+//         where:{
+//             admin:admin,
+//         }})
+//         .then(() => res.sendStatus(200))
+//         .catch (err => console.log(err))
+// })
 
 // ------------------------------------------------- Propiedades -------------------------------------------------
 
@@ -57,16 +58,17 @@ routerAdmin.post("/addprop", (req,res) => {
     .then(prop => {
         res.status(201).send(prop)
     })
+    .catch(err => console.log(err))
 })
 
-routerAdmin.delete("/deleteprop", (req,res) => {
-    const {id} = req.body
+routerAdmin.delete("/deleteprop/:id", (req,res) => {
+    const {id} = req.params
     Propiedades.destroy({
         where:{
             id:id
         }})
         .then((data)=> res.sendStatus(202))
-        .catch(res.sendStatus(204))
+        .catch(err => console.log(err))
 })
 
 routerAdmin.post("/changeprop", (req,res) =>{

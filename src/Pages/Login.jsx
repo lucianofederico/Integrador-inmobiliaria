@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/user";
@@ -12,12 +12,10 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   Stack,
   Link as LinkChakra,
   Button,
   Heading,
-  Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 
@@ -32,7 +30,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/api/users/login", {
+      .post("/api/users/login", {
         email: e.target.email.value,
         password: e.target.password.value,
       })
@@ -40,12 +38,18 @@ const Login = () => {
       .then((datos) => {
         dispatch(setUser(datos));
         console.log(datos);
-      });
-    navigate("/").catch((err) => console.log(err));
+        navigate("/")
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <div >
+              <Link to="/">
+      <Button className="boton" ml={10} mt={10} color="orange.500">
+      Volver
+      </Button>
+      </Link>
       <Flex
         minH={"100vh"}
         align={"center"}
@@ -59,7 +63,6 @@ const Login = () => {
           </Stack>
 
           <Box
-            onSubmit={handleSubmit}
             rounded={"lg"}
             bg={useColorModeValue("white", "gray.700")}
             boxShadow={"lg"}
@@ -103,31 +106,6 @@ const Login = () => {
         </Stack>
       </Flex>
 
-      {/* <Link to="/">Volver</Link>
-      Inciar sesion
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email
-          <input
-            className="sesion"
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-          />
-        </label>
-        <label>
-          Contraseña
-          <input
-            className="sesion"
-            type="password"
-            name="password"
-            placeholder="***"
-            required
-          />
-        </label>
-        <button type="submit"> Iniciar sesion</button>
-      </form> */}
     </div>
   );
 };

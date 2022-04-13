@@ -3,37 +3,42 @@ import { Box } from "@chakra-ui/react";
 import { Center, Image } from "@chakra-ui/react";
 import { Container } from '@chakra-ui/react'
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Inmueble = ({ inmueble }) => {
   const {id, nombre, precio, descripcion, ubicacion, imagen, disponible } =
     inmueble;
 
+    const [propList, setPropList] = useState({});
+
   const navigate = useNavigate()
 
     const propPage = () => {
-      navigate(`http://localhost:8080/api/propiedades/${id}`)
+      navigate(`/propiedades/${id}`)
     }
 
   return (
-    <div onClick={propPage}>
-      <Box  textAlign="center"  color="#0D1B2A" fontFamily="Homer Simpson UI">
-      <Container fontSize="2em" fontWeight="bold">{nombre}</Container>
+
+      <Box pb={5} onClick={propPage} textAlign="center"  color="#0D1B2A" className="probando" backgroundColor="#F2ED6F" mr={10}>
+
+      <Container  mt={10} color="orange.900" fontSize="2em" fontWeight="bold">{nombre} </Container>
       
 
         <Center>
-          <Image boxSize="70%" borderRadius={25} src={imagen} alt="Propiedad" />
+
+          <Image my={10} boxSize="70%" borderRadius={25} src={imagen} alt="Propiedad" _hover={10}/>
+
         </Center>
-        {/* <img src={imagen} alt="" /> */}
 
-        <Container fontSize="1em"> USD {precio}.000</Container>
 
-        <Container fontSize="1em">{descripcion}</Container>
+        <Container  fontSize="1em"><strong>Precio: USD {precio}.000 </strong> </Container>
+
+        {/* <Container fontSize="1em">{descripcion}</Container> */}
 
         <Container>{disponible}</Container>
 
-        <Container fontSize="1em">Ubicacion: {ubicacion}</Container>
+        <Container fontSize="1em" > <strong> Ubicacion: {ubicacion} </strong> </Container>
       </Box>
-    </div>
   );
 };
 

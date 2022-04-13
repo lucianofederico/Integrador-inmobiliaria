@@ -4,16 +4,24 @@ const { db, User } = require("../models/index");
 const passport = require("passport");
 
 routerUser.post("/login", passport.authenticate("local"), (req, res) => {
-  console.log("logueooo", req.user)
-  res.json(req.user);
+  try {
+    console.log("logueooo", req.user)
+    res.json(req.user);
+  }
+  catch (e){ 
+    console.log("Hay un error", e)
+  }
 });
 
 routerUser.post("/register", (req, res) => {
-  console.log("bodyyy", req.body);
   const user = req.body;
-  User.create(user).then((user) => {
+  User.create(user)
+  .then((user) => {
     res.status(201).send(user);
-  });
+  })
+  .catch(err => {
+    console.log(err)
+  })
 });
 
 routerUser.post("/logout", (req, res) => {
@@ -22,7 +30,7 @@ routerUser.post("/logout", (req, res) => {
 });
 
 routerUser.get("/me", (req, res) => {
-  console.log("use", req.user)
+  console.log("user back", req.user)
   if (!req.user) {
     return res.sendStatus(401);
   }
@@ -45,4 +53,22 @@ routerUser.post("/me", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+
+
 module.exports = routerUser;
+
+
+
+//  <GridItem>
+// <IconButton
+// onClick={()=>handleDelete(user.id)}
+// type="submit"
+// variant="outline"
+// colorScheme="red"
+// icon={<DeleteIcon />}
+// />
+//         </GridItem> 
+
+//         const handleDelete = (id) => {
+//           console.log("ID", id)
+//        }

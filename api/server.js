@@ -9,20 +9,24 @@ const { db, Propiedades, User } = require("./models/index");
 const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
 const session = require("express-session");
+const bodyParser = require ("body-parser")
+
+
+app.use(cors());
+
 
 app.use(volleyball);
 app.use(morgan("tiny"));
-app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: false }))
+// app.use(bodyParser)
+app.use(cookieParser());
 app.use(
   session({ secret: "integrador", resave: true, saveUninitialized: true })
 );
-app.use(cookieParser());
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors({ methods: ["GET", "POST"], credentials: true }));
 
 
 passport.use(
@@ -64,6 +68,8 @@ passport.deserializeUser(function (id, done) {
     })
     .catch(done);
 });
+
+
 
 app.use("/api", routes);
 

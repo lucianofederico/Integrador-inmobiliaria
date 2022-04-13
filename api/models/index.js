@@ -6,3 +6,4 @@ const User = require('./Users')
 
 
 module.exports = {db, Propiedades, User}
+

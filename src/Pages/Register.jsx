@@ -24,10 +24,10 @@ import { Heading, Box } from "@chakra-ui/react";
 //     phoneNumber: e.target.phoneNumber.value,
 //     direction: e.target.direction.value}
 //     axios
-//       .post("http://localhost:8080/api/users/register", obj)
+//       .post("/api/users/register", obj)
 //       .then(()=>{
 //         axios
-//         .post("http://localhost:8080/api/users/login", {email:e.target.email.value, password:e.target.password.value})
+//         .post("/api/users/login", {email:e.target.email.value, password:e.target.password.value})
 //         .then(res=> res.data)
 //         .then (datos=>{
 //           dispatch (setUser (datos))
@@ -133,10 +133,10 @@ const Register = () => {
       direction: e.target.direction.value,
     };
     axios
-      .post("http://localhost:8080/api/users/register", obj)
+      .post("/api/users/register", obj)
       .then(() => {
         axios
-          .post("http://localhost:8080/api/users/login", {
+          .post("/api/users/login", {
             email: e.target.email.value,
             password: e.target.password.value,
           })

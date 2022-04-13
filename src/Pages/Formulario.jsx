@@ -6,7 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../templates/inmuebles.css"
-import { Button, Heading } from "@chakra-ui/react";
+import { Button, Heading, Box } from "@chakra-ui/react";
 
 function Formulario() {
   const dispatch = useDispatch();
@@ -14,12 +14,14 @@ function Formulario() {
 
   return (
     <>
+    <Box minHeight="100vh" className="probando" >
     <Link to="/">
-      <Button className="boton" mb={10}>
+      <Button className="boton" m={10} color="orange.500">
       Volver
       </Button>
-      <Heading fontSize={"4xl"} ml={10}>Registrate</Heading>
       </Link>
+      <Box textAlign="center" >
+      <Heading fontSize={"4xl"} ml={10}>Registrate</Heading>
       <Formik
         initialValues={{
           name: "",
@@ -78,10 +80,10 @@ function Formulario() {
             direction: valores.direction,
           };
           axios
-            .post("http://localhost:8080/api/users/register", obj)
+            .post("/api/users/register", obj)
             .then(() => {
               axios
-                .post("http://localhost:8080/api/users/login", {
+                .post("/api/users/login", {
                   email: valores.email,
                   password: valores.password,
                 })
@@ -172,13 +174,15 @@ function Formulario() {
                 component={() => <div>{errors.phoneNumber}</div>}
               />
             </div>
-            <Button className="boton" mt={10}>
+            <Button  mt={10}>
             <button type="submit" > <strong>Enviar</strong></button>
             </Button>
 
           </Form>
         )}
       </Formik>
+      </Box>
+      </Box>
     </>
   );
 }

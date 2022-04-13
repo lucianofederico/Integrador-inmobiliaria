@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/user";
@@ -15,9 +14,8 @@ const Logout = () => {
 
   const logout = () => {
     axios
-      .post("http://localhost:8080/api/users/logout")
-      .then(() => dispatch(setUser({})))
-
+      .post("/api/users/logout")
+      .then(() => dispatch(setUser(null)))
       .then(console.log("deslog", usuario))
       navigate("/")
 
@@ -25,7 +23,7 @@ const Logout = () => {
 
   return (
     <div>
-       <Button className="boton" size='md' onClick={logout}>
+       <Button className="boton" size='md' onClick={logout} color="orange.500">
       Logout
       </Button>
     </div>
