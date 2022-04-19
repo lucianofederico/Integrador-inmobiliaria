@@ -85,7 +85,7 @@ const Admin = () => {
       <Box textAlign="center" fontWeight="bold" mb={5} fontSize={30}>
         Lista de todos los usuarios
       </Box>
-      <Grid templateColumns="repeat(7, 1fr)">
+      <Grid templateColumns="repeat(7, 1fr)" m={3}>
         <GridItem
           fontWeight="bold"
           w="100%"
@@ -247,7 +247,7 @@ const Admin = () => {
       <Link to="/addprop">
       <Button ml={10} mb={10}>Agregar propiedad</Button>
       </Link> 
-      <Grid templateColumns="repeat(5, 1fr)">
+      <Grid mx={3} pb={5} templateColumns="repeat(5, 1fr) ">
         <GridItem
           fontWeight="bold"
           w="100%"

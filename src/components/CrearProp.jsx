@@ -3,37 +3,36 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { setPropiedad } from "../store/propiedades";
+import CategoriaForm from "../commons/CategoriaForm";
+import { Link } from "react-router-dom"
 import {
   Container,
   Flex,
   Box,
   Heading,
-  Link,
-  IconButton,
   Button,
   VStack,
-  HStack,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
   WrapItem,
   FormControl,
   FormLabel,
   Input,
   InputGroup,
+  Alert,
+  AlertIcon,
+  CloseButton
 } from "@chakra-ui/react";
 
 export default function CrearProp() {
   const dispatch = useDispatch();
+
+  const [arrayCategorias, setArrayCategorias] = useState([]);
 
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [precio, setPrecio] = useState("");
   const [ubicacion, setUbicacion] = useState("");
   const [imagen, setImagen] = useState("");
-  const [categoria, setCategoria] = useState([]);
-  const [disponible, setDisponible] = useState("");
+  const [creado, setCreado] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,25 +43,35 @@ export default function CrearProp() {
         precio: precio,
         ubicacion: ubicacion,
         imagen: imagen,
-        categoria: categoria.split(","),
+        categoria: arrayCategorias,
         // disponible: disponible
       })
       .then((res) => res.data)
       .then((datos) => {
         dispatch(setPropiedad(datos));
       })
+      .then(()=>{
+        setCreado(true)
+      })
       .catch((err) => console.log(err));
   };
 
   return (
-    <Box>
-      <Link to="/">
+    <Box minHeight="100vh">
+      <Link to="/administrador">
         <Button className="boton" m={10}>
           Volver
         </Button>
       </Link>
 
       <Container p={10} maxW="full" mt={0} centerContent overflow="hidden">
+        {creado ? (
+          <Alert status="success">
+            <AlertIcon />
+            Propiedad creada correctamente
+            <CloseButton onClick={()=>setCreado(false)} position='absolute' right='8px' top='8px' />
+          </Alert>
+        ) : null}
         <Flex>
           <Box bg="#5C6F68" color="white" borderRadius="lg">
             <Box p={10}>
@@ -73,7 +82,7 @@ export default function CrearProp() {
               <WrapItem>
                 <form onSubmit={handleSubmit}>
                   <Box bg="white" borderRadius="lg">
-                    <Box m={5} color="#0B0E3F">
+                    <Box m={5} color="#0B0E3F" display="flex">
                       <VStack>
                         <FormControl id="name">
                           <FormLabel mt={5}>Nombre</FormLabel>
@@ -132,21 +141,7 @@ export default function CrearProp() {
                           </InputGroup>
                         </FormControl>
                         <FormControl>
-                          <FormLabel>Categoria</FormLabel>
-                          <InputGroup borderColor="#E0E1E7">
-                            <Input
-                              type="text"
-                              name="email"
-                              size="md"
-                              value={categoria}
-                              onChange={(e) => {
-                                setCategoria(e.target.value);
-                              }}
-                            />
-                          </InputGroup>
-                        </FormControl>
-                        <FormControl>
-                          <FormLabel>Imagen</FormLabel>
+                          <FormLabel>URL imagen</FormLabel>
                           <InputGroup borderColor="#E0E1E7">
                             <Input
                               type="text"
@@ -178,6 +173,10 @@ export default function CrearProp() {
                           </Button>
                         </FormControl>
                       </VStack>
+                      <CategoriaForm
+                        arrayCategorias={arrayCategorias}
+                        setArrayCategorias={setArrayCategorias}
+                      />
                     </Box>
                   </Box>
                 </form>

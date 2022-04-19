@@ -58,6 +58,8 @@ routerPropiedades.post("/categoria", (req,res) => {
 })
 
 
+
+
 module.exports = routerPropiedades;
 
 

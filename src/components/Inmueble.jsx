@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Inmueble = ({ inmueble }) => {
+
   const {id, nombre, precio, descripcion, ubicacion, imagen, disponible } =
     inmueble;
 

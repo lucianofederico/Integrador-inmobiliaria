@@ -11,11 +11,6 @@ Propiedades.init(
     },
     descripcion: {
       type: S.TEXT,
-      // get(){
-      //   const truncateDescription = this.getDataValue ("descripcion");
-      //   return truncateDescription.substring(0,100) + "...";
-      // },
-      // allowNull: false,
       },
     precio:{
       type: S.INTEGER,

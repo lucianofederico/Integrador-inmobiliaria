@@ -22,11 +22,11 @@ const App = () => {
         <Route path="/register" element={<Formulario />} />
         <Route path="/propiedades/:id" element={<PropPage />}/>
 
-      {/* {isLoged ? isLoged.admin ? <> */}
+      {isLoged ? isLoged.admin ? <> 
         <Route path="/administrador" element={<Admin/>} />
         <Route path="/addprop" element={<CrearProp />}/>
-        {/* </>
-          : null : null}  */}
+         </>
+          : null : null}  
           
       </Routes>
       </Box>

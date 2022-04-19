@@ -32,16 +32,6 @@ routerAdmin.delete("/deleteuser/:id", (req, res) => {
         .catch(err => console.log(err))
 })
 
-// routerAdmin.post("/changeuser", (req,res)=>{
-//     const {admin} = req.body
-//     User.update(req.body,{
-//         where:{
-//             admin:admin,
-//         }})
-//         .then(() => res.sendStatus(200))
-//         .catch (err => console.log(err))
-// })
-
 // ------------------------------------------------- Propiedades -------------------------------------------------
 
 routerAdmin.post("/addprop", (req,res) => {
@@ -71,9 +61,10 @@ routerAdmin.delete("/deleteprop/:id", (req,res) => {
         .catch(err => console.log(err))
 })
 
-routerAdmin.post("/changeprop", (req,res) =>{
-    const { nombre, descripcion, precio, ubicacion, imagen, disponible, categoria } = req.body
+routerAdmin.put("/changeprop", (req,res) =>{
+    const {id, nombre, descripcion, precio, ubicacion, imagen, disponible, categoria } = req.body
     Propiedades.update({
+        id: id,
         nombre: nombre,
         descripcion: descripcion,
         precio: precio,

@@ -11,11 +11,10 @@ import {
   Container,
 } from "@chakra-ui/react";
 
-const Categorias = () => {
+const Categorias = ({arrayCategorias, setArrayCategorias}) => {
     const dispatch = useDispatch();
 
-    const [arrayCategorias, setArrayCategorias] = useState ([])
-
+    
     const [checkedCasa, setCheckedCasa] = useState(false)
     const [checkedDepartamento, setCheckedDepartamento] = useState(false)
     const [checkedTerreno, setCheckedTerreno] = useState(false)
@@ -27,22 +26,10 @@ const Categorias = () => {
 
     useEffect(()=>{
         if(checkedCasa){
-        axios
-         .post("/api/propiedades/categoria",{
-          categoria: [...arrayCategorias, "casa"],
-         })
-         .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-         .catch(err =>console.log(err))
          setArrayCategorias([...arrayCategorias, "casa"])
         }
         else{
           const filtrado = arrayCategorias.filter((value)=>value!="casa")
-          axios
-          .post("/api/propiedades/categoria",{
-           categoria: filtrado
-          })
-          .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-          .catch(err =>console.log(err))
           setArrayCategorias(filtrado)    
         }
       }, [checkedCasa])
@@ -52,22 +39,10 @@ const Categorias = () => {
     
       useEffect(()=>{
         if(checkedDepartamento){
-        axios
-         .post("/api/propiedades/categoria",{
-          categoria: [...arrayCategorias, "departamento"],
-         })
-         .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-         .catch(err =>console.log(err))
          setArrayCategorias([...arrayCategorias, "departamento"])
         }
         else{
           const filtrado = arrayCategorias.filter((value)=>value!="departamento")
-          axios
-          .post("/api/propiedades/categoria",{
-           categoria: filtrado
-          })
-          .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-          .catch(err =>console.log(err))
           setArrayCategorias(filtrado)    
         }
       }, [checkedDepartamento])
@@ -75,22 +50,10 @@ const Categorias = () => {
     
       useEffect(()=>{
         if(checkedPileta){
-        axios
-         .post("/api/propiedades/categoria",{
-          categoria: [...arrayCategorias, "pileta"],
-         })
-         .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-         .catch(err =>console.log(err))
          setArrayCategorias([...arrayCategorias, "pileta"])
         }
         else{
           const filtrado = arrayCategorias.filter((value)=>value!="pileta")
-          axios
-          .post("/api/propiedades/categoria",{
-           categoria: filtrado
-          })
-          .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-          .catch(err =>console.log(err))
           setArrayCategorias(filtrado)    
         }
       }, [checkedPileta])
@@ -98,110 +61,50 @@ const Categorias = () => {
     
       useEffect(()=>{
         if(checkedTerreno){
-        axios
-         .post("/api/propiedades/categoria",{
-          categoria: [...arrayCategorias, "terreno"],
-         })
-         .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-         .catch(err =>console.log(err))
          setArrayCategorias([...arrayCategorias, "terreno"])
         }
         else{
           const filtrado = arrayCategorias.filter((value)=>value!="terreno")
-          axios
-          .post("/api/propiedades/categoria",{
-           categoria: filtrado
-          })
-          .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-          .catch(err =>console.log(err))
           setArrayCategorias(filtrado)    
         }
       }, [checkedTerreno])
     
       useEffect(()=>{
         if(checked2ambientes){
-        axios
-         .post("/api/propiedades/categoria",{
-          categoria: [...arrayCategorias, "2 ambientes"],
-         })
-         .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-         .catch(err =>console.log(err))
          setArrayCategorias([...arrayCategorias, "2 ambientes"])
         }
         else{
           const filtrado = arrayCategorias.filter((value)=>value!="2 ambientes")
-          axios
-          .post("/api/propiedades/categoria",{
-           categoria: filtrado
-          })
-          .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-          .catch(err =>console.log(err))
           setArrayCategorias(filtrado)    
         }
       }, [checked2ambientes])
     
       useEffect(()=>{
         if(checked3ambientes){
-        axios
-         .post("/api/propiedades/categoria",{
-          categoria: [...arrayCategorias, "3 ambientes"],
-         })
-         .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-         .catch(err =>console.log(err))
          setArrayCategorias([...arrayCategorias, "3 ambientes"])
         }
         else{
           const filtrado = arrayCategorias.filter((value)=>value!="3 ambientes")
-          axios
-          .post("/api/propiedades/categoria",{
-           categoria: filtrado
-          })
-          .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-          .catch(err =>console.log(err))
           setArrayCategorias(filtrado)    
         }
       }, [checked3ambientes])
     
       useEffect(()=>{
         if(checked4ambientes){
-        axios
-         .post("/api/propiedades/categoria",{
-          categoria: [...arrayCategorias, "4 ambientes"],
-         })
-         .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-         .catch(err =>console.log(err))
          setArrayCategorias([...arrayCategorias, "4 ambientes"])
         }
         else{
           const filtrado = arrayCategorias.filter((value)=>value!="4 ambientes")
-          axios
-          .post("/api/propiedades/categoria",{
-           categoria: filtrado
-          })
-          .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-          .catch(err =>console.log(err))
           setArrayCategorias(filtrado)    
         }
       }, [checked4ambientes])
     
       useEffect(()=>{
         if(checked5ambientes){
-        axios
-         .post("/api/propiedades/categoria",{
-          categoria: [...arrayCategorias, "5 ambientes"],
-         })
-         .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-         .catch(err =>console.log(err))
          setArrayCategorias([...arrayCategorias, "5 ambientes"])
         }
         else{
           const filtrado = arrayCategorias.filter((value)=>value!="5 ambientes")
-          axios
-          .post("/api/propiedades/categoria",{
-           categoria: filtrado
-          })
-          .then ((propiedad) => dispatch(setPropiedad(propiedad.data)))
-          .catch(err =>console.log(err))
           setArrayCategorias(filtrado)    
         }
       }, [checked5ambientes])
