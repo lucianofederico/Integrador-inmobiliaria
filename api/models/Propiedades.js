@@ -11,24 +11,35 @@ Propiedades.init(
     },
     descripcion: {
       type: S.TEXT,
-      allowNull: false,
       },
     precio:{
       type: S.INTEGER,
-      allowNull: false,
+      // allowNull: false,
   },
     ubicacion: {
       type: S.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     imagen: {
       type: S.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     disponible: {
       type: S.BOOLEAN,
       defaultValue: true,
+      set(value){
+        if (!value){
+        this.setDataValue(
+          "nombre",
+           this.getDataValue("nombre").concat ("NO DISPONIBLE")
+        );
+      }
+      this.setDataValue("disponible", value)
     },
+    },
+    categoria:{
+      type: S.ARRAY(S.STRING),
+    }
   },
   { sequelize: db, modelName: "propiedades" }
 );
