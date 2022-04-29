@@ -55,7 +55,7 @@ const Home = () => {
 
   return (
     <div>
-      <Box backgroundRepeat="no-repeat" backgroundImage="https://www.vilaprop.com.ar/img/slider/01.jpg" height={800} backgroundPosition="center 0">
+      <Box backgroundRepeat="no-repeat" backgroundImage="https://images.pexels.com/photos/262405/pexels-photo-262405.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" height={800} backgroundPosition="center 0">
     
 
       <Box display="flex" padding={5} justifyContent="flex-end">

@@ -20,7 +20,7 @@ const Inmueble = ({ inmueble }) => {
 
   return (
 
-      <Box pb={5} onClick={propPage} textAlign="center"  color="#0D1B2A" className="probando" backgroundColor="#F2ED6F" mr={10}>
+      <Box borderRadius={25} pb={5} onClick={propPage} textAlign="center"  color="#0D1B2A" className="probando" backgroundColor="#F9E0D9" mr={10}>
 
       <Container  mt={10} color="orange.900" fontSize="2em" fontWeight="bold">{nombre} </Container>
       

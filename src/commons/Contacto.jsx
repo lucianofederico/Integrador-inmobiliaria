@@ -49,7 +49,7 @@ export default function contact() {
     <Container maxW="full" mt={0} centerContent overflow="hidden">
       <Flex>
         <Box
-          bg="#5C6F68"
+          bg="#156064"
           color="white"
           borderRadius="lg"
 >

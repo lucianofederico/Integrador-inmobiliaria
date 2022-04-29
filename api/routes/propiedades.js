@@ -28,7 +28,6 @@ routerPropiedades.get("/:id", (req,res) => {
 
 routerPropiedades.post("/buscador", (req,res)=>{
   const {busqueda} = req.body
-   // busqueda = busqueda.toLowerCase()
    
   Propiedades.findAll({ 
     where: {nombre : {[Op.iLike]: `%${busqueda}%`}}})

@@ -15,7 +15,7 @@ const App = () => {
 
   return (
 
-      <Box background="#F4E04D" > 
+      <Box background="#6DAEDB" > 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

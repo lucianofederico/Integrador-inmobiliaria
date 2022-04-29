@@ -37,7 +37,7 @@ const Grilla = ({grilla}) => {
       
       <div ref={grilla}>
       
-      <Grid  templateColumns='repeat(3, 1fr)' gap={6} mb={10}>
+      <Grid pt={5} templateColumns='repeat(3, 1fr)' gap={6} mb={10}>
         
         {propiedad
           ? propiedad.map((inmueble) => (
